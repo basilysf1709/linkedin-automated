@@ -51,7 +51,7 @@ def searchCompanyRecruiters(companyName : str) -> None:
     time.sleep(4)
     stepCounter += 1
 
-    # Search for Apple recruiters and press enter
+    # Search for Company recruiters and press Enter
     search = driver.find_element("xpath", "//input[@placeholder = 'Search']")
     search.send_keys("University Recruiter @ {}".format(companyName))
     search.send_keys(Keys.ENTER)
