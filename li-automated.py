@@ -1,12 +1,12 @@
-from termcolor import colored
+import time
 import selenium
+from datetime import datetime
+from termcolor import colored
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.common.by import By
-import time
-from datetime import datetime
 
 
 stepCounter = 1
@@ -41,8 +41,15 @@ stepCounter += 1
 email.send_keys(userInfo[0])
 passcode.send_keys(userInfo[1])
 print(colored('Step {}:'.format(stepCounter), 'white'), colored('Enter Email and Passcode In The Input Field Complete', 'green'))
+time.sleep(2)
 stepCounter += 1
 
+# Click the Submit Button
+submit = driver.find_element(By.CLASS_NAME, "homepage-basic_signin-form_submit-button")
+submit.click()
+print(colored('Step {}:'.format(stepCounter), 'white'), colored('Click the Submit Button Complete', 'green'))
+time.sleep(4)
+stepCounter += 1
 
 # Quit the driver
 # Make sure you completely close the session on Mac 
