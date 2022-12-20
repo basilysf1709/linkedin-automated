@@ -45,11 +45,13 @@ time.sleep(2)
 stepCounter += 1
 
 # Click the Submit Button
-submit = driver.find_element(By.CLASS_NAME, "homepage-basic_signin-form_submit-button")
-submit.click()
+submit = driver.find_element("xpath", "//button[@type = 'submit']").click()
 print(colored('Step {}:'.format(stepCounter), 'white'), colored('Click the Submit Button Complete', 'green'))
-time.sleep(4)
+time.sleep(5)
 stepCounter += 1
+
+# Search for Apple recruiters
+
 
 # Quit the driver
 # Make sure you completely close the session on Mac 
