@@ -162,7 +162,7 @@ def search_company_recruiters(companyName : str) -> None:
         try:
             _ = driver.window_handles
         except Exception as e:
-            print("Step {} Error: {}".format(stepCounter, e))
+            # print("Step {} Error: {}".format(stepCounter, e))
             break
         time.sleep(1)
     driver.quit()
