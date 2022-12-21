@@ -59,6 +59,43 @@ def searchCompanyRecruiters(companyName : str) -> None:
     time.sleep(3)
     stepCounter += 1
 
+    # See all People Results
+    all_people = driver.find_element("xpath", "//a[text() = 'See all people results']").click()
+    print(colored('Step {}:'.format(stepCounter), 'white'), colored('Click to see all people results complete'.format(companyName), 'green'))
+    time.sleep(3)
+    stepCounter += 1
+
+
+    # Connect, Message and Follow Company Recruiters
+    button_elements = driver.find_elements(By.TAG_NAME, 'button')
+    for button in button_elements:
+        if button.text == 'Follow':
+            button.click()
+            time.sleep(1)
+        elif button.text == 'Connect':
+            button.click()
+            time.sleep(2)
+            pop_up_buttons = driver.find_elements(By.TAG_NAME, 'button')
+            for b in pop_up_buttons:
+                if b.text == 'Send':
+                    b.click()
+                    time.sleep(1)
+                    break
+                elif b.text == 'Other':
+                    b.click()
+                    time.sleep(3)
+                    connect_button = driver.find_element("xpath", "//button[@aria-label = 'Connect']").click()
+                    time.sleep(2)
+                    send_button = driver.find_element("xpath", "//button[@aria-label = 'Send now']").click()
+                    time.sleep(2)
+                    break
+            elif button.text == 'Message':
+                # do something
+            
+    print(colored('Step {}:'.format(stepCounter), 'white'), colored('Connect, Message and Follow for {} recruiters'.format(companyName), 'green'))
+    time.sleep(3)
+    stepCounter += 1
+
     # Quit the driver
     # Make sure you completely close the session on Mac 
     while True:
@@ -70,5 +107,4 @@ def searchCompanyRecruiters(companyName : str) -> None:
     driver.quit()
     print(colored('Step {}:'.format(stepCounter), 'white'), colored('Automation Complete', 'green'))
 
-
-searchCompanyRecruiters("Google")
+searchCompanyRecruiters("Nvidia")
