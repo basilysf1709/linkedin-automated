@@ -10,7 +10,7 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
 # Function to search for Company Recruiters
-def searchCompanyRecruiters(companyName : str) -> None:
+def search_company_recruiters(companyName : str) -> None:
     # Initialize a step counter variable
     stepCounter = 1
     # Initialize a driver variable to run Google Chrome
@@ -30,7 +30,7 @@ def searchCompanyRecruiters(companyName : str) -> None:
 
     # Get the URL up and running
     try:
-        driver.gdsafaet(url_for_linkedin)
+        driver.get(url_for_linkedin)
     except Exception as e:
         print(colored('Step {}:'.format(stepCounter), 'white'), colored('LinkedIn URL Open Unsuccesful', 'red'))
         print("Step {} Error: {}".format(stepCounter, e))
@@ -141,7 +141,7 @@ def searchCompanyRecruiters(companyName : str) -> None:
                         time.sleep(2)
                         break
             elif button.text == 'Message':
-                print("Hovered over Message")
+                print(colored("Hovered over Message", "yellow"))
                 # Fix this message feature
                 # button.click()
                 # time.sleep(2)
@@ -168,4 +168,6 @@ def searchCompanyRecruiters(companyName : str) -> None:
     driver.quit()
     print(colored('Step {}:'.format(stepCounter), 'white'), colored('Automation Complete', 'green'))
 
-searchCompanyRecruiters(sys.argv[1])
+
+# Call the search company recruiters function
+search_company_recruiters(sys.argv[1])
