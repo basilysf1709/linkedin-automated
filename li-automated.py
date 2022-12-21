@@ -17,8 +17,8 @@ def searchCompanyRecruiters(companyName : str) -> None:
     try:
         driver = webdriver.Chrome()
     except Exception as e:
-        print(e)
         print(colored('Step {}:'.format(stepCounter), 'white'), colored('LinkedIn Automation Failed', 'red'))
+        print("Step {} Error: {}".format(stepCounter, e))
         return
     else:
         print(colored('Step {}:'.format(stepCounter), 'white'), colored('LinkedIn Automation Begin', 'green'))
@@ -30,10 +30,12 @@ def searchCompanyRecruiters(companyName : str) -> None:
 
     # Get the URL up and running
     try:
-        driver.get(url_for_linkedin)
+        driver.gdsafaet(url_for_linkedin)
     except Exception as e:
-        print(e)
         print(colored('Step {}:'.format(stepCounter), 'white'), colored('LinkedIn URL Open Unsuccesful', 'red'))
+        print("Step {} Error: {}".format(stepCounter, e))
+        driver.quit()
+        return
     else:
         print(colored('Step {}:'.format(stepCounter), 'white'), colored('LinkedIn URL Open Succesful', 'green'))
         time.sleep(2)
@@ -50,8 +52,10 @@ def searchCompanyRecruiters(companyName : str) -> None:
             for line in Auth:
                 userInfo.append(line.replace('\n', ''))
     except Exception as e:
-        print(e)
         print(colored('Step {}:'.format(stepCounter), 'white'), colored('Get Email and Passcode From a File Unsuccesful', 'red'))
+        print("Step {} Error: {}".format(stepCounter, e))
+        driver.quit()
+        return
     else:
         print(colored('Step {}:'.format(stepCounter), 'white'), colored('Get Email and Passcode From a File Succesful', 'green'))
         stepCounter += 1
@@ -61,8 +65,10 @@ def searchCompanyRecruiters(companyName : str) -> None:
         email.send_keys(userInfo[0])
         passcode.send_keys(userInfo[1])
     except Exception as e:
-        print(e)
         print(colored('Step {}:'.format(stepCounter), 'white'), colored('Enter Email and Passcode In The Input Field Incomplete', 'red'))
+        print("Step {} Error: {}".format(stepCounter, e))
+        driver.quit()
+        return
     else:
         print(colored('Step {}:'.format(stepCounter), 'white'), colored('Enter Email and Passcode In The Input Field Complete', 'green'))
         time.sleep(2)
@@ -72,8 +78,10 @@ def searchCompanyRecruiters(companyName : str) -> None:
     try:
         submit = driver.find_element("xpath", "//button[@type = 'submit']").click()
     except Exception as e:
-        print(e)
         print(colored('Step {}:'.format(stepCounter), 'white'), colored('Click the Submit Button Incomplete', 'red'))
+        print("Step {} Error: {}".format(stepCounter, e))
+        driver.quit()
+        return
     else:
         print(colored('Step {}:'.format(stepCounter), 'white'), colored('Click the Submit Button Complete', 'green'))
         time.sleep(4)
@@ -85,8 +93,10 @@ def searchCompanyRecruiters(companyName : str) -> None:
         search.send_keys("University Recruiter @ {}".format(companyName))
         search.send_keys(Keys.ENTER)
     except Exception as e:
-        print(e)
         print(colored('Step {}:'.format(stepCounter), 'white'), colored('Find and search for {} recruiters Unsuccessful'.format(companyName), 'red'))
+        print("Step {} Error: {}".format(stepCounter, e))
+        driver.quit()
+        return
     else:
         print(colored('Step {}:'.format(stepCounter), 'white'), colored('Find and search for {} recruiters Successful'.format(companyName), 'green'))
         time.sleep(3)
@@ -96,8 +106,10 @@ def searchCompanyRecruiters(companyName : str) -> None:
     try:
         all_people = driver.find_element("xpath", "//a[text() = 'See all people results']").click()
     except Exception as e:
-        print(e)
         print(colored('Step {}:'.format(stepCounter), 'white'), colored('Click to see all people results Incomplete'.format(companyName), 'red'))
+        print("Step {} Error: {}".format(stepCounter, e))
+        driver.quit()
+        return
     else:
         print(colored('Step {}:'.format(stepCounter), 'white'), colored('Click to see all people results Complete'.format(companyName), 'green'))
         time.sleep(3)
@@ -135,8 +147,10 @@ def searchCompanyRecruiters(companyName : str) -> None:
                 # time.sleep(2)
                 # return
     except Exception as e:
-        print(e)
         print(colored('Step {}:'.format(stepCounter), 'white'), colored('Connect, Message and Follow for {} recruiters Incomplete'.format(companyName), 'red'))
+        print("Step {} Error: {}".format(stepCounter, e))
+        driver.quit()
+        return
     else:
         print(colored('Step {}:'.format(stepCounter), 'white'), colored('Connect, Message and Follow for {} recruiters Complete'.format(companyName), 'green'))
         time.sleep(3)
@@ -148,7 +162,7 @@ def searchCompanyRecruiters(companyName : str) -> None:
         try:
             _ = driver.window_handles
         except Exception as e:
-            print(e)
+            print("Step {} Error: {}".format(stepCounter, e))
             break
         time.sleep(1)
     driver.quit()
