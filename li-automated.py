@@ -1,3 +1,4 @@
+import sys
 import time
 import selenium
 from datetime import datetime
@@ -89,9 +90,13 @@ def searchCompanyRecruiters(companyName : str) -> None:
                     send_button = driver.find_element("xpath", "//button[@aria-label = 'Send now']").click()
                     time.sleep(2)
                     break
-            elif button.text == 'Message':
-                # do something
-            
+        elif button.text == 'Message':
+            print("Hovered over message")
+            # Fix this message feature
+            # button.click()
+            # time.sleep(2)
+            # return
+
     print(colored('Step {}:'.format(stepCounter), 'white'), colored('Connect, Message and Follow for {} recruiters'.format(companyName), 'green'))
     time.sleep(3)
     stepCounter += 1
@@ -107,4 +112,4 @@ def searchCompanyRecruiters(companyName : str) -> None:
     driver.quit()
     print(colored('Step {}:'.format(stepCounter), 'white'), colored('Automation Complete', 'green'))
 
-searchCompanyRecruiters("Nvidia")
+searchCompanyRecruiters(sys.argv[1])
