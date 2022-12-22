@@ -9,6 +9,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
+# Just a test script
 
 driver = webdriver.Chrome()
 url_for_linkedin = 'https://www.linkedin.com/in/basil-yusuf'
