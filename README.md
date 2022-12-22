@@ -1,5 +1,15 @@
-### Project Name : Automating <a href="mailto:basilyusuf1709@gmail.com" >
-  <img align="center" alt="Basil Yusuf | Gmail" width="26px" src="https://github.com/SatYu26/SatYu26/blob/master/Assets/Gmail.svg" />
-</a> &nbsp;&nbsp;
+### Project Idea : Automating LinkedIn Connection Requests
 
+### Get Started
+
+Installing Dependencies
+
+1. Make sure you have python3 installed
+2. Install selenium
+3. Install chrome webdriver
+4. Install colored
+
+### How to Run?
+
+`python3 li-automated.py [Company_Name]`
 
